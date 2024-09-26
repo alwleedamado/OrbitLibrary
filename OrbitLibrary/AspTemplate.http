@@ -1,0 +1,6 @@
+@AspTemplate_HostAddress = http://localhost:5232
+
+GET {{AspTemplate_HostAddress}}/Books/
+Accept: application/json
+
+###
