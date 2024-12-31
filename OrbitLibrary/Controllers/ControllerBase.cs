@@ -15,8 +15,8 @@ namespace OrbitLibrary.Controllers
         where InputDto : class
         where OutDto : DtoBase
     {
-        private readonly IRepository<TEntity> _repository;
-        private readonly IMapper _mapper;
+        protected readonly IRepository<TEntity> _repository;
+        protected readonly IMapper _mapper;
 
         public ControllerBase(IRepository<TEntity> repository, IMapper mapper)
         {
@@ -39,7 +39,8 @@ namespace OrbitLibrary.Controllers
             {
                 return NotFound();
             }
-            return Ok(entity);
+            var output = _mapper.Map<OutDto>(entity);
+            return Ok(output);
         }
 
         [HttpPost()]
